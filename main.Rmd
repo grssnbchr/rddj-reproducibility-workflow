@@ -1,0 +1,27 @@
+---
+title: "An example RMarkdown file"
+author: "Timo Grossenbacher, SRF Data"
+date: "04/09/2015"
+output: html_document
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+You can also include code from other scripts:
+
+```{r}
+source("processData.R")
+```
+
+Example script that takes something from input and writes a png to output
+```{r}
+# read csv from input
+data <- read.csv("input//data.csv")
+# transform it using a sourced function
+processedData <- doSomething(data)
+# plot
+png(filename = "output/image.png")
+plot(processedData)
+dev.off()
+plot(processedData)
+```

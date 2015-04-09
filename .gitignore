@@ -1,0 +1,5 @@
+.Rdata
+.Rhistory
+.Rprofile
+*.html
+output/*
