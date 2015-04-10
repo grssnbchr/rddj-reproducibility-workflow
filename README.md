@@ -59,6 +59,7 @@ git rm -rf .
 .Rprofile
 main.html
 output/*
+tmp
 ```
 
 4. make an initial commit as well as a push to GitHub
