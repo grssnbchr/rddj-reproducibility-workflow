@@ -5,7 +5,9 @@ date: "04/09/2015"
 output: html_document
 ---
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+This is an example R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+Inside this document, you show your audience what you did in your analysis. You can also include a link to the downloadable RScript, [like so](http://srfdata.github.io/reproducibility-workflow/rscript.zip).
 
 You can also include code from other scripts:
 
