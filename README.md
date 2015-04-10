@@ -13,10 +13,10 @@ Note: The repo from which the knitted RMarkdown is served to the GitHub Page can
 
 Init an empty repository & and add remote:
 ```
-mkdir reproducibility-workflow
-cd reproducibility-workflow
+mkdir rddj-reproducibility-workflow
+cd rddj-reproducibility-workflow
 git init
-git remote add origin https://github.com/srfdata/reproducibility-workflow.git (replace this with your account and repo, of course)
+git remote add origin https://github.com/grssnbchr/rddj-reproducibility-workflow.git (replace this with your account and repo, of course)
 ```
 
 Add a `.gitignore` to ignore standard R output files & project files as well as the `tmp` folder we'll need for building
@@ -126,3 +126,5 @@ Now, every time you want to deploy your updated RMarkdown and your R script to y
 
 And your knitted RMarkdown will magically find its way into *username*.github.io/*reponame*.
 Note: This also works when *reponame* is a private repo!
+
+In the case of this demonstration repo, the results are viewable under (grssnbchr.github.io/rddj-reproducibility-workflow)[http://grssnbchr.github.io/rddj-reproducibility-workflow].
