@@ -1,6 +1,6 @@
 .Rdata
 .Rhistory
 .Rprofile
-*.html
+main.html
 output/*
 tmp
