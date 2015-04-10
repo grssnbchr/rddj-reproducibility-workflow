@@ -127,4 +127,4 @@ Now, every time you want to deploy your updated RMarkdown and your R script to y
 And your knitted RMarkdown will magically find its way into *username*.github.io/*reponame*.
 Note: This also works when *reponame* is a private repo!
 
-In the case of this demonstration repo, the results are viewable under (grssnbchr.github.io/rddj-reproducibility-workflow)[http://grssnbchr.github.io/rddj-reproducibility-workflow].
+In the case of this demonstration repo, the results are viewable under http://grssnbchr.github.io/rddj-reproducibility-workflow.
