@@ -3,3 +3,4 @@
 .Rprofile
 *.html
 output/*
+tmp
