@@ -19,6 +19,9 @@ Example script that takes something from input and writes a png to output
 data <- read.csv("input//data.csv")
 # transform it using a sourced function
 processedData <- doSomething(data)
+
+# generate an output folder if it doesn't exist
+dir.create(file.path(getwd(), 'output'), showWarnings = F)
 # plot
 png(filename = "output/image.png")
 plot(processedData)
