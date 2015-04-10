@@ -2,8 +2,10 @@
 
 This repo is tutorial & example at the same time, yay!
 
-The goal of this workflow is to automagically upload your knitted RMarkdown file to GitHub Pages and to "build" your R code into a zipped folder
+The goal of this workflow is to automagically upload your knitted RMarkdown file to a GitHub Page and to "build" your R code into a zipped folder
 which can be downloaded by your readers. Ideally, you would reference this zipped folder from within your knitted RMarkdown. 
+
+Note: The repo from which the knitted RMarkdown is served to the GitHub Page can also be private! 
 
 ## Steps
 
@@ -63,7 +65,7 @@ git add -u
 git commit -m "first commit to gh-pages branch"
 ```
 
-### Step 3 (repetitive)
+### Step 3
 For deployment, we want the following: 
 
 * The knitted RMarkdown file (`main.html`) should be pushed as `ìndex.html`, so it is shown on the GitHub Page
@@ -113,6 +115,8 @@ At the end, make the script executable
 ```
 chmod 755 deploy.sh
 ```
+
+### Step 4 (repetitive)
 
 Now, every time you want to deploy your updated RMarkdown and your R script to your GitHub page, you can 
 
