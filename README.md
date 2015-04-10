@@ -2,6 +2,9 @@
 
 This repo is tutorial & example at the same time, yay!
 
+The goal of this workflow is to automagically upload your knitted RMarkdown file to GitHub Pages and to "build" your R code into a zipped folder
+which can be downloaded by your readers. Ideally, you would reference this zipped folder from within your knitted RMarkdown. 
+
 ## Steps
 
 ### Step 0
@@ -14,7 +17,7 @@ git init
 git remote add origin https://github.com/srfdata/reproducibility-workflow.git (replace this with your account and repo, of course)
 ```
 
-Add a .gitignore to ignore standard R output files & project files as well as the tmp folder we'll need to do building
+Add a `.gitignore` to ignore standard R output files & project files as well as the `tmp` folder we'll need for building
 ```
 .Rdata
 .Rhistory
@@ -24,7 +27,7 @@ output/*
 tmp
 ```
 
-### Step 1
+### Step 1 (repetitive)
 
 All your "productive" R code goes into one RMarkdown file, but you can include source files (see `main.Rmd`).
 
@@ -38,42 +41,42 @@ git push
 
 ### Step 2
 
-Now you want to publish your RMarkdown, and, ideally, your whole R script (together with the input file) on GitHub Pages. 
+Now you want to publish your RMarkdown, and, ideally, your whole R script (together with the input files) on GitHub Pages. 
 
 Initially, and only once, you need to do the following in your working directory:
 
-1. Start a new branch gh-pages
+* Start a new branch gh-pages
 
 ```
 git checkout -b gh-pages
 ```
 
-2. remove everything except gitignore
+* remove everything except gitignore (need to enable an extension in Bash shells in order for this command to work)
 ```
 shopt -s extglob
 git rm -rf !(.gitignore)
 git add -u
 ```
 
-3. make an initial commit as well as a push to GitHub
+* make an initial commit
 ```
 git commit -m "first commit to gh-pages branch"
 ```
 
-### Step 3
+### Step 3 (repetitive)
 For deployment, we want the following: 
 
 * The knitted RMarkdown file (`main.html`) should be pushed as `ìndex.html`, so it is shown on the GitHub Page
-* The R code and the input files should be made available for download as a zipped folder, so everyone can rerun the RMarkdown and/or modify the code and produce the output folder.
+* The R code and the input files should be made available for download as a **zipped folder**, so everyone can rerun the RMarkdown and/or modify the code and produce the output folder.
 
-In order to automate the deployment process, we create a little deploy script.
+In order to automate this deployment process, we create a little shell script.
 
 First, make sure you are in the master branch
 ```
 git checkout master
 ```
 
-Then, fire up your favorite editor and create a shellscript `deploy.sh` in the top folder, with the following content:
+Then, fire up your favorite editor and create a shell script called `deploy.sh` in the top folder, with the following content:
 
 ```
 #!/bin/bash
@@ -81,7 +84,7 @@ Then, fire up your favorite editor and create a shellscript `deploy.sh` in the t
 mkdir tmp
 cp main.Rmd tmp/
 cp -r input tmp/
-cp processData.R tmp/
+cp processData.R tmp/ # replace this with the name your subroutines and add more, if needed
 # switch to gh-pages branch
 git checkout gh-pages
 # rename index file (the processed main.Rmd) from master branch
@@ -117,5 +120,5 @@ Now, every time you want to deploy your updated RMarkdown and your R script to y
 ./deploy.sh
 ```
 
-And your knitted RMarkdown will magically find its way into <username>.github.io/<reponame>.
-Note: This also works when <reponame> is a private repo!
+And your knitted RMarkdown will magically find its way into *username*.github.io/*reponame*.
+Note: This also works when *reponame* is a private repo!
