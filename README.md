@@ -14,13 +14,14 @@ git init
 git remote add origin https://github.com/srfdata/reproducibility-workflow.git (replace this with your account and repo, of course)
 ```
 
-Add a .gitignore to ignore standard R output files & project files
+Add a .gitignore to ignore standard R output files & project files as well as the tmp folder we'll need to do building
 ```
 .Rdata
 .Rhistory
 .Rprofile
-*.html
+main.html
 output/*
+tmp
 ```
 
 ### Step 1
@@ -47,24 +48,16 @@ Initially, and only once, you need to do the following in your working directory
 git checkout -b gh-pages
 ```
 
-2. remove everything 
+2. remove everything except gitignore
 ```
-git rm -rf .
-```
-
-3.. Add a .gitignore with stuff you don't want
-```
-.Rdata
-.Rhistory
-.Rprofile
-main.html
-output/*
-tmp
+shopt -s extglob
+git rm -rf !(.gitignore)
+git add -u
 ```
 
-4. make an initial commit as well as a push to GitHub
+3. make an initial commit as well as a push to GitHub
 ```
-git commit -am "first commit to gh-pages branch"
+git commit -m "first commit to gh-pages branch"
 ```
 
 ### Step 3
@@ -85,24 +78,19 @@ Then, fire up your favorite editor and create a shellscript `deploy.sh` in the t
 ```
 #!/bin/bash
 # make temporary copy of the stuff we want to commit in with all data we need in build
-cp -r * tmp
+mkdir tmp
+cp main.Rmd tmp/
+cp -r input tmp/
+cp processData.R tmp/
 # switch to gh-pages branch
 git checkout gh-pages
-# copy over index file (the processed preprocessing.Rmd) from master branch
-cp tmp/preprocessing.html index.html
-# clean
-rm -rf rscript/
+# rename index file (the processed main.Rmd) from master branch
+mv main.html index.html
+# make folder for rscript
 mkdir rscript
 # copy over necessary scripts from master branch 
-cp tmp/classify.r rscript
-cp tmp/numberFormatter.r rscript
-cp tmp/preprocessing.Rmd rscript
-mkdir rscript/output
-# copy over other nessecary output files from master branch
-cp tmp/output/verzeichnis_beschreibung.csv rscript/output/
-cp tmp/output/signatures_verzeichnis_haupttyp_beschreibung.csv rscript/output/
-# copy over other necessary input files from master branch
-cp -r tmp/input rscript/
+cp -r tmp/* rscript/
+
 # zip the rscript folder
 zip -r rscript.zip rscript
 # remove the rscript folder
@@ -111,16 +99,23 @@ rm -rf rscript
 rm -rf tmp
 # add everything for committing
 git add .
-git add -u
 # commit in gh-pages
-git commit -m "preprocessing: build and deploy to gh-pages"
+git commit -m "build and deploy to gh-pages"
 # push to remote:gh-pages
 git push origin gh-pages 
 # checkout master again
 git checkout master
-
 ```
 At the end, make the script executable 
 ```
 chmod 755 deploy.sh
 ```
+
+Now, every time you want to deploy your updated RMarkdown and your R script to your GitHub page, you can 
+
+```
+./deploy.sh
+```
+
+And your knitted RMarkdown will magically find its way into <username>.github.io/<reponame>.
+Note: This also works when <reponame> is a private repo!
