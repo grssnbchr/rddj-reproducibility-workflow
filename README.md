@@ -68,6 +68,7 @@ git commit -m "first commit to gh-pages branch"
 ### Step 3
 For deployment, we want the following: 
 
+(* The RMarkdown should be automagically knitted to HTML)
 * The knitted RMarkdown file (`main.html`) should be pushed as `ìndex.html`, so it is shown on the GitHub Page
 * The R code and the input files should be made available for download as a **zipped folder**, so everyone can rerun the RMarkdown and/or modify the code and produce the output folder.
 
@@ -82,6 +83,9 @@ Then, fire up your favorite editor and create a shell script called `deploy.sh` 
 
 ```
 #!/bin/bash
+# first, knit
+# only works if you have pandoc > 1.9.0 installed 
+# R -e "rmarkdown::render('main.Rmd')"
 # make temporary copy of the stuff we want to commit in with all data we need in build
 mkdir tmp
 cp main.Rmd tmp/
