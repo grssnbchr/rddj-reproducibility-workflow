@@ -74,7 +74,7 @@ For deployment, we want the following:
 
 In order to automate this deployment process, we create a little shell script.
 
-First, make sure you are in the master branch and you have a clean working directory.
+First, make sure you are in the master branch:
 ```
 git checkout master
 ```
@@ -128,7 +128,10 @@ Now, every time you want to deploy your updated RMarkdown and your R script to y
 ./deploy.sh
 ```
 
+
 And your knitted RMarkdown will magically find its way into *username*.github.io/*reponame*.
 Note: This also works when *reponame* is a private repo!
+
+**For this to work best, make sure you are in the `master` branch and you have a clean working directory!**
 
 In the case of this demonstration repo, the results are viewable under http://grssnbchr.github.io/rddj-reproducibility-workflow.
