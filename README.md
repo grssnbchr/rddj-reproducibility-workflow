@@ -2,7 +2,7 @@
 
 This repo is tutorial & example at the same time, yay!
 
-The goal of this workflow is to automagically upload your knitted RMarkdown file to a **GitHub Page** and to "build" your R code into a zipped folder
+The goal of this workflow is to automagically upload your knitted RMarkdown file to a [**GitHub Page**](http://grssnbchr.github.io/rddj-reproducibility-workflow/) and to "build" your R code into a zipped folder
 which can be downloaded by your readers. Ideally, you would reference this zipped folder from within your knitted RMarkdown. 
 
 Note: *The repo from which the knitted RMarkdown is served to the GitHub Page can also be private!*
