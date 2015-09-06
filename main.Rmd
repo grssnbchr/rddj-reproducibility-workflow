@@ -1,7 +1,7 @@
 ---
 title: "An example RMarkdown file"
 author: "Timo Grossenbacher, SRF Data"
-date: "04/09/2015"
+date: "09/06/2015"
 output: html_document
 ---
 
@@ -30,3 +30,5 @@ plot(processedData)
 dev.off()
 plot(processedData)
 ```
+
+This is the end.

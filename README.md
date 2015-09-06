@@ -16,7 +16,8 @@ Init an empty repository & and add remote:
 mkdir rddj-reproducibility-workflow
 cd rddj-reproducibility-workflow
 git init
-git remote add origin https://github.com/grssnbchr/rddj-reproducibility-workflow.git (replace this with your account and repo, of course)
+# replace the following with your account and repo
+git remote add origin https://github.com/grssnbchr/rddj-reproducibility-workflow.git 
 ```
 
 Add a `.gitignore` to ignore standard R output files & project files as well as the `tmp` folder we'll need for building
@@ -26,7 +27,6 @@ Add a `.gitignore` to ignore standard R output files & project files as well as 
 .Rprofile
 main.html
 output/*
-tmp
 ```
 
 ### Step 1 (repetitive)
