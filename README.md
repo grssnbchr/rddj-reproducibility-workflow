@@ -1,5 +1,11 @@
 # A workflow for reproducible and transparent data journalism with R and GitHub
 
+
+
+**WARNING: This guide is outdated and (probably) flawed. Check out my new [rddj-template](https://github.com/grssnbchr/rddj-template) instead!**
+
+
+
 This repo is tutorial & example at the same time, yay!
 
 The goal of this workflow is to automagically upload your knitted RMarkdown file to a [**GitHub Page**](http://grssnbchr.github.io/rddj-reproducibility-workflow/) and to "build" your R code into a zipped folder
